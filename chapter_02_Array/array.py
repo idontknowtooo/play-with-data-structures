@@ -37,10 +37,10 @@ class Array:
         self._data[index] = e  ###此时，将e添加到 index处
         self._size += 1 ###维护数组的容量
 
-    def get(self, index):
-        if not 0 <= index < self._size:
+    def get(self, index): 查询位置为index的元素
+        if not 0 <= index < self._size: ### 检测 index 是否在合法范围内
             raise ValueError('get failed. Index is illegal.')
-        return self._data[index]
+        return self._data[index] ##返回 索引为 index的元素
 
     def get_last(self):
         return self.get(self._size - 1)
@@ -48,10 +48,10 @@ class Array:
     def get_first(self):
         return self.get(0)
 
-    def set(self, index, e):
-        if not 0 <= index < self._size:
+    def set(self, index, e):  ###把 index位置的元素修改为e 
+        if not 0 <= index < self._size: ### 检测是否 位于合法范围内
             raise ValueError('set failed. Index is illegal.')
-        self._data[index] = e
+        self._data[index] = e ###
 
     def contains(self, e):
         for i in range(self._size):
