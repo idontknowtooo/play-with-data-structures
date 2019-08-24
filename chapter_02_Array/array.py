@@ -1,4 +1,4 @@
-class Array:
+class Array: ### 1 arr=None？？？ 2 【none】*capacity  ????  3
     def __init__(self, arr=None, capacity=10):###静态数组，指定容量   capacity设定默认值，与实际拥有的元素数量无关
         if isinstance(arr, list):
             self._data = arr[:] ###数组 data                 ###私有属性，表示为 _data
