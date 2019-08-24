@@ -1,19 +1,19 @@
 class Array:
-    def __init__(self, arr=None, capacity=10):
+    def __init__(self, arr=None, capacity=10):###静态数组，指定容量   capacity设定默认值，与实际拥有的元素数量无关
         if isinstance(arr, list):
-            self._data = arr[:]
-            self._size = len(arr)
-            return
-        self._data = [None] * capacity
-        self._size = 0
-
-    def get_size(self):
+            self._data = arr[:] ###数组 data                 ###私有属性，表示为 _data
+            self._size = len(arr)  ###  
+            return              ###初始化 size 和data
+        self._data = [None] * capacity 
+        self._size = 0 ###  data数组中的元素数量 由 size表示，初始化为0
+ ### 私有属性，防止用户从外部获取 数据信息，避免 data和size之间的不一致（因为 用户会修改）
+    def get_size(self):  ###获取数组中的 元素个数
         return self._size
 
-    def get_capacity(self):
+    def get_capacity(self): ###  获取数组的 容量
         return len(self._data)
 
-    def is_empty(self):
+    def is_empty(self): ### 用来 检查数组是否为 0
         return self._size == 0
 
     def add_last(self, e):
