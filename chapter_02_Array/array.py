@@ -16,26 +16,26 @@ class Array:
     def is_empty(self): ### 用来 检查数组是否为 0
         return self._size == 0
 
-    def add_last(self, e):
-        self.add(self._size, e)
+    def add_last(self, e):  
+        self.add(self._size, e) ### 调用add 函数，此时index 为 size
 
     def add_first(self, e):
-        self.add(0, e)
+        self.add(0, e) ## 调用add函数，此时index 为0
 
-    def add(self, index, e):
+    def add(self, index, e): ###向指定位置 index 添加元素e
         """从后往前"""
-        if not 0 <= index <= self._size:
+        if not 0 <= index <= self._size:  ###index小于 0 , 大于size，则抛出异常
             raise ValueError(
                 'add failed. Require index >= 0 and index <= array sise.')
-        if self._size == len(self._data):
+        if self._size == len(self._data): #### 判断 数组 是否 有足够空间
             if self._size == 0:
                 self._resize(1)
-            else:
+            else: ### 占满，容量扩充为原来的2 倍
                 self._resize(2 * len(self._data))
-        for i in range(self._size - 1, index - 1, -1):
-            self._data[i + 1] = self._data[i]
-        self._data[index] = e
-        self._size += 1
+        for i in range(self._size - 1, index - 1, -1): ##i 大于 index , 小于 size
+            self._data[i + 1] = self._data[i] ###将i 位置的元素 往后挪一位
+        self._data[index] = e  ###此时，将e添加到 index处
+        self._size += 1 ###维护数组的容量
 
     def get(self, index):
         if not 0 <= index < self._size:
