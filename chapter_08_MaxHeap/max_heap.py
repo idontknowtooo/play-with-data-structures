@@ -33,14 +33,14 @@ class MaxHeap:
     def _right_child(self, index):
         return index * 2 + 2
 
-    def add(self, e):
-        self._data.add_last(e)
-        self._sift_up(self._data.get_size() - 1)
+    def add(self, e):  ### 添加元素 e
+        self._data.add_last(e) ### 数组末尾 添加 新元素
+        self._sift_up(self._data.get_size() - 1 ） ### 要上浮元素（即 新加入）的索引： 最后一个元素
 
-    def _sift_up(self, k):
+    def _sift_up(self, k):  ### k 为索引，且k不能为根节点（>0）
         while k > 0 and self._data.get(k) > self._data.get(self._parent(k)):
-            self._data.swap(k, self._parent(k))
-            k = self._parent(k)
+            self._data.swap(k, self._parent(k)) ### K索引的值大于 父亲节点值，两者交换
+            k = self._parent(k) ###  ？？？？
 
     def find_max(self):
         if self._data.get_size() == 0:
