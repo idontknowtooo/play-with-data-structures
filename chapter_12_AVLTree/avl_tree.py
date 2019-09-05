@@ -60,8 +60,8 @@ class AVLTree:
         if not node:
             self._size += 1
             return self._Node(key, value)
-        if node.key == key:
-            node.value = value
+        if node.key == key:### key相等的时候，node的左右子树没有改变，
+            node.value = value ### 所以更新height这句话计算出的node.height和以前是一样的，不会变化
         elif node.key > key:
             node.left = self._add(node.left, key, value)
         else:
