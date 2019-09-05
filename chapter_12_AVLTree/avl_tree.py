@@ -17,16 +17,16 @@ class AVLTree:
     def is_empty(self):
         return self._size == 0
 
-    def is_banlanced(self):
+    def is_banlanced(self):#  判断 二叉树 是否是 平衡二叉树
         return self._is_banlanced(self._root)
 
-    def _is_banlanced(self, node):
-        if not node:
+    def _is_banlanced(self, node): # 判断 以 node为根的二叉树 是否是 平衡二叉树（递归算法）
+        if not node:                  ###（递归到底的情况） node 不存在，则 属于 平衡二叉树
             return True
-        banlanced_factor = self._get_banlance_factor(node)
-        if abs(banlanced_factor) > 1:
-            return False
-        return self._is_banlanced(node.left) and self._is_banlanced(node.right)
+        banlanced_factor = self._get_banlance_factor(node)### node存在，则计算它的 平衡因子
+        if abs(banlanced_factor) > 1:                      ### 平衡因子 大于1，则 不是 平衡二叉树  
+            return False                                     ####  为何 没有对 平衡因子 绝对值的其他情况  进行判断
+        return self._is_banlanced(node.left) and self._is_banlanced(node.right)### 递归得 看这个节点的左右子树 是否是  平衡二叉树
 
     def is_bst(self):
         keys = []
@@ -49,9 +49,9 @@ class AVLTree:
         return node.height
 
     def _get_banlance_factor(self, node):
-        if not node:
+        if not node: ### node不存在， 平衡因子 为0 
             return 0
-        return self._get_height(node.left) - self._get_height(node.right)
+        return self._get_height(node.left) - self._get_height(node.right) ### node存在，则 计算 左右子树的高度差
 
     def add(self, key, value):
         self._root = self._add(self._root, key, value)
